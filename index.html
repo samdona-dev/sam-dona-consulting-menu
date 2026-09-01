@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Dona — Governance &amp; AI Systems Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2430;
+    --paper:#F7F5F1;
+    --slate:#3D5A73;
+    --slate-deep:#28415A;
+    --gold:#B98B4E;
+    --line: rgba(27,36,48,0.14);
+    --line-soft: rgba(27,36,48,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 32px 80px;
+  }
+  header{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:14px;
+    color:var(--slate);
+    letter-spacing:0.01em;
+    margin:0 0 18px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:44px;
+    line-height:1.12;
+    margin:0 0 20px;
+    max-width:11.5em;
+  }
+  h1 em{
+    font-style:italic;
+    color:var(--slate-deep);
+  }
+  .lede{
+    font-size:18px;
+    line-height:1.6;
+    color:#3a4451;
+    max-width:34em;
+    margin:0;
+  }
+  .credentials{
+    padding:28px 0 0;
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 28px;
+    font-size:14px;
+    color:#5a6472;
+  }
+  .credentials span{white-space:nowrap;}
+  .credentials b{color:var(--ink); font-weight:500;}
+
+  .progress{
+    display:flex;
+    gap:8px;
+    padding:28px 0 0;
+  }
+  .dot{
+    flex:1;
+    height:3px;
+    background:var(--line);
+    border-radius:2px;
+    transition:background .3s ease;
+  }
+  .dot.active{background:var(--slate);}
+  .dot.done{background:var(--slate-deep);}
+
+  .services{
+    margin-top:8px;
+  }
+  .service{
+    border-bottom:1px solid var(--line);
+  }
+  .service-head{
+    display:flex;
+    align-items:baseline;
+    gap:20px;
+    padding:28px 0;
+    cursor:pointer;
+    user-select:none;
+  }
+  .num{
+    font-family:'Fraunces', serif;
+    font-size:15px;
+    color:var(--gold);
+    font-weight:500;
+    flex-shrink:0;
+    width:22px;
+  }
+  .service-title{
+    font-family:'Fraunces', serif;
+    font-size:23px;
+    font-weight:500;
+    flex:1;
+    margin:0;
+  }
+  .chev{
+    flex-shrink:0;
+    width:16px;
+    height:16px;
+    color:#8a92a0;
+    transition:transform .25s ease;
+  }
+  .service.open .chev{transform:rotate(45deg);}
+  .service-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .service.open .service-body{max-height:400px;}
+  .service-inner{
+    padding:0 0 32px 42px;
+    max-width:32em;
+  }
+  .plain{
+    font-size:15.5px;
+    line-height:1.65;
+    color:#3a4451;
+    margin:0 0 16px;
+  }
+  .example{
+    border-left:2px solid var(--gold);
+    padding:2px 0 2px 18px;
+    font-size:15px;
+    line-height:1.65;
+    color:#4b5563;
+  }
+  .example b{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.03em;
+    color:var(--gold);
+    margin-bottom:6px;
+    font-weight:600;
+  }
+
+  footer{
+    margin-top:56px;
+    padding-top:36px;
+    border-top:1px solid var(--line);
+  }
+  .footer-title{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:500;
+    margin:0 0 12px;
+  }
+  .footer-text{
+    font-size:15.5px;
+    line-height:1.6;
+    color:#3a4451;
+    max-width:32em;
+    margin:0 0 24px;
+  }
+  .tag{
+    display:inline-block;
+    font-size:13px;
+    color:#5a6472;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:6px 14px;
+    margin:0 8px 8px 0;
+  }
+
+  @media (max-width:600px){
+    .wrap{padding:0 20px 60px;}
+    header{padding:44px 0 32px;}
+    h1{font-size:32px;}
+    .lede{font-size:16.5px;}
+    .service-title{font-size:19px;}
+    .service-inner{padding-left:0; margin-left:0;}
+    .num{width:18px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Sam Dona — Strategic Consultant, Governance &amp; AI Systems</p>
+    <h1>AI is already making decisions in your business. <em>Someone should be setting the rules for that.</em></h1>
+    <p style="font-size:14px; font-style:italic; color:#8a92a0; margin:-8px 0 24px;">(This is AI governance.)</p>
+    <p class="lede">Every day, staff are pasting client data, pricing, and the exact formula that makes your business work into AI tools you don't control — with no record of what left the building.</p>
+    <div class="credentials">
+      <span><b>30+ years</b> working across SAP, Oracle, Xero, Zoho, MS365</span>
+      <span>with roles at Brambles (CHEP)</span>
+      <span>Goodman Fielder</span>
+      <span>Komatsu</span>
+      <span>Santos</span>
+      <span>Transfield Services</span>
+      <span>Woolworths</span>
+      <span>Dona Construction</span>
+      <span>Antiochian Orthodox Archdiocese</span>
+    </div>
+  </header>
+
+  <div class="progress" id="progress"></div>
+
+  <p style="font-size:15.5px; line-height:1.6; color:#3a4451; max-width:34em; margin:32px 0 8px;"><b style="color:var(--ink);">Sam Dona introduces —</b> a practical menu of six services — built by a person who controls the AI, not the other way around — that turn AI into a business enabler.</p>
+
+  <div class="services" id="services">
+
+    <div class="service" data-i="0">
+      <div class="service-head">
+        <span class="num">01</span>
+        <h3 class="service-title">AI needs diagnostic</h3>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="service-body">
+        <div class="service-inner">
+          <p class="plain">Before anything gets built, we sit down with the key people in the business to find out what's actually needed — so spend goes toward a real problem, not a trend.</p>
+          <div class="example"><b>In practice</b>An owner says "I want AI in the business" but isn't sure why. We run a microscope-and-telescope review — close up on the day-to-day friction, then zoomed out on the bigger picture — to find the real issue: rising costs, cashflow gaps, slow invoicing, missed follow-ups, or manual reporting. Then we recommend only what solves that.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service" data-i="1">
+      <div class="service-head">
+        <span class="num">02</span>
+        <h3 class="service-title">AI governance &amp; policy</h3>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="service-body">
+        <div class="service-inner">
+          <p class="plain">Set the rules AI has to operate within — what's allowed, what isn't, and who signs off before it touches something important.</p>
+          <div class="example"><b>In practice</b>Staff are already using tools like ChatGPT, Claude, and Copilot day to day, but nobody's said what's off-limits. We write the rulebook: private client data pasted in, contracts drafted unsupervised — either one can breach customer privacy, void your professional indemnity cover, or leave a gap in your public liability protection if something goes wrong. We put boundaries in place before that happens, not after.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service" data-i="2">
+      <div class="service-head">
+        <span class="num">03</span>
+        <h3 class="service-title">Custom AI algorithm development</h3>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="service-body">
+        <div class="service-inner">
+          <p class="plain">Off-the-shelf AI tools don't know how your business actually runs. We build the logic around your real workflows instead.</p>
+          <div class="example"><b>In practice</b>A construction company wanted a live client portal for every project — build stages, progress payments, variations needing approval, warranty periods, and the Occupation Certificate paperwork a private certifier needs before sign-off — all tracked in one place instead of chased across emails and folders. Generic software doesn't know their cost codes, stage sequencing, or trade structure, so the logic gets built from scratch, trained on how the business really operates. Updates run day-to-day by someone with no technical background — no code, no developer on standby.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service" data-i="3">
+      <div class="service-head">
+        <span class="num">04</span>
+        <h3 class="service-title">AI risk &amp; safety rails</h3>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="service-body">
+        <div class="service-inner">
+          <p class="plain">A checkpoint that catches AI mistakes before they become real losses — for the owner and for everyone using the tool.</p>
+          <div class="example"><b>In practice</b>An AI tool suggests a supplier payment amount. Instead of it going straight out the door, a safety rail forces a human to check anything over a set threshold before it's approved.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service" data-i="4">
+      <div class="service-head">
+        <span class="num">05</span>
+        <h3 class="service-title">Enterprise systems alignment</h3>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="service-body">
+        <div class="service-inner">
+          <p class="plain">Making sure new AI work actually talks to the systems you already run, so it modernizes the business instead of disrupting it.</p>
+          <div class="example"><b>In practice</b>A business runs Xero and wants to add an AI reporting tool. Without alignment, it pulls messy or duplicate data and the reports come out wrong. We make sure the AI connects to Xero properly — clean data in, reliable numbers out.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service" data-i="5">
+      <div class="service-head">
+        <span class="num">06</span>
+        <h3 class="service-title">Executive coaching</h3>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+      </div>
+      <div class="service-body">
+        <div class="service-inner">
+          <p class="plain">The systems can be sound and the policy watertight, but the owner still has to make the calls. This is one-on-one support building that judgment and confidence.</p>
+          <div class="example"><b>In practice</b>A principal is being asked by staff and clients about AI almost weekly and doesn't feel equipped to answer. Regular sessions build their own fluency and decision-making, so they're leading the change, not reacting to it.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p class="footer-title">Where this comes from</p>
+    <p class="footer-text">This approach was built over 30+ years inside large organisations, long before "AI governance" was a phrase anyone used — reconciling systems, policy, and finance controls at scale. That same discipline is now applied to AI, as a strategic enabler rather than a brake on the business.</p>
+    <p class="footer-text">As the Federal Government's Buy Australian AI Partnership pushes major enterprises toward homegrown AI adoption, the businesses buying local still need someone governing what they're buying. <a href="https://www.minister.industry.gov.au/charlton/media/buy-australian-ai-partnership-boost-homegrown-ai-adoption" target="_blank" rel="noopener" style="color:var(--slate); font-size:13px;">Source: Dept. of Industry, Science and Resources ↗</a></p>
+    <span class="tag">SAP</span>
+    <span class="tag">Oracle</span>
+    <span class="tag">Xero</span>
+    <span class="tag">Zoho</span>
+    <span class="tag">MS365</span>
+
+    <div style="margin-top:32px; padding-top:24px; border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 28px; font-size:15px;">
+      <span><b style="color:var(--ink); font-weight:500;">Sam Dona</b></span>
+      <span><a href="mailto:samdona.consulting@outlook.com" style="color:var(--slate-deep); text-decoration:none;">samdona.consulting@outlook.com</a></span>
+      <span><a href="tel:+61419499835" style="color:var(--slate-deep); text-decoration:none;">0419 499 835</a></span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const services = document.querySelectorAll('.service');
+  const progressBar = document.getElementById('progress');
+  const dots = [];
+  services.forEach((s, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    progressBar.appendChild(d);
+    dots.push(d);
+  });
+
+  function updateDots(openIndex){
+    dots.forEach((d, i) => {
+      d.classList.remove('active','done');
+      if(openIndex === null) return;
+      if(i < openIndex) d.classList.add('done');
+      if(i === openIndex) d.classList.add('active');
+    });
+  }
+
+  services.forEach(service => {
+    const head = service.querySelector('.service-head');
+    head.addEventListener('click', () => {
+      const isOpen = service.classList.contains('open');
+      services.forEach(s => s.classList.remove('open'));
+      if(!isOpen){
+        service.classList.add('open');
+        updateDots(parseInt(service.dataset.i));
+        service.scrollIntoView({behavior:'smooth', block:'nearest'});
+      } else {
+        updateDots(null);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
